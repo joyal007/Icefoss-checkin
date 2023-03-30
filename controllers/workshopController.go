@@ -35,8 +35,13 @@ func GoWorkshop(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
 		return
 	}
-	fmt.Println(userFound)
-	
+	userFound.CheckIn = true
+	err :=mgm.Coll(&userFound).Update(&userFound)
+	if err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+		return
+	}
+	c.JSON(http.StatusOK,userFound)	
 }
 func ArWorkshop(c *gin.Context) {
 	var user models.User
@@ -58,8 +63,13 @@ func ArWorkshop(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
 		return
 	}
-	fmt.Println(userFound)
-	
+	userFound.CheckIn = true
+	err :=mgm.Coll(&userFound).Update(&userFound)
+	if err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+		return
+	}
+	c.JSON(http.StatusOK,userFound)	
 }
 func RustWorkshop(c *gin.Context) {
 	var user models.User
@@ -81,8 +91,13 @@ func RustWorkshop(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
 		return
 	}
-	fmt.Println(userFound)
-	
+	userFound.CheckIn = true
+	err :=mgm.Coll(&userFound).Update(&userFound)
+	if err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+		return
+	}
+	c.JSON(http.StatusOK,userFound)	
 }
 func WebdevWorkshop(c *gin.Context) {
 	var user models.User
@@ -104,8 +119,13 @@ func WebdevWorkshop(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
 		return
 	}
-	fmt.Println(userFound)
-	
+	userFound.CheckIn = true
+	err :=mgm.Coll(&userFound).Update(&userFound)
+	if err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+		return
+	}
+	c.JSON(http.StatusOK,userFound)	
 }
 func FlutterWorkshop(c *gin.Context) {
 	var user models.User
@@ -127,8 +147,13 @@ func FlutterWorkshop(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
 		return
 	}
-	fmt.Println(userFound)
-	
+	userFound.CheckIn = true
+	err :=mgm.Coll(&userFound).Update(&userFound)
+	if err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+		return
+	}
+	c.JSON(http.StatusOK,userFound)	
 }
 
 func DevopsWorkshop(c *gin.Context) {
