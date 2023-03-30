@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joyal007/go-scan/middleware"
 	"github.com/joyal007/go-scan/routes"
 )
 
@@ -21,7 +22,8 @@ func main(){
 	api := router.Group("icefoss")
 	v1 := api.Group("v1")
 	checkin := v1.Group("checkin")
-
+	
+	checkin.Use(middleware.AuthToken)
 	routes.Routes(checkin)
 
 	router.Run(":"+PORT)
