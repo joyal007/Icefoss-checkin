@@ -11,13 +11,11 @@ import (
 	"github.com/joyal007/go-scan/models"
 	"github.com/kamva/mgm/v3"
 	"go.mongodb.org/mongo-driver/bson"
-	
 )
-
 
 func GoWorkshop(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -27,25 +25,25 @@ func GoWorkshop(c *gin.Context) {
 	coll := mgm.Coll(&models.Gos{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)	
+	c.JSON(http.StatusOK, userFound)
 }
 func ArWorkshop(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -55,25 +53,25 @@ func ArWorkshop(c *gin.Context) {
 	coll := mgm.Coll(&models.Ars{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)	
+	c.JSON(http.StatusOK, userFound)
 }
 func RustWorkshop(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -83,25 +81,25 @@ func RustWorkshop(c *gin.Context) {
 	coll := mgm.Coll(&models.Rusts{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)	
+	c.JSON(http.StatusOK, userFound)
 }
 func WebdevWorkshop(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -111,25 +109,25 @@ func WebdevWorkshop(c *gin.Context) {
 	coll := mgm.Coll(&models.Webs{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)	
+	c.JSON(http.StatusOK, userFound)
 }
 func FlutterWorkshop(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -139,26 +137,26 @@ func FlutterWorkshop(c *gin.Context) {
 	coll := mgm.Coll(&models.Flutters{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)	
+	c.JSON(http.StatusOK, userFound)
 }
 
 func DevopsWorkshop(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -168,26 +166,26 @@ func DevopsWorkshop(c *gin.Context) {
 	coll := mgm.Coll(&models.Devops{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)
+	c.JSON(http.StatusOK, userFound)
 }
 
-func Hackfit(c *gin.Context){
+func Hackfit(c *gin.Context) {
 	var user models.User
-	if err := c.BindJSON(&user); err != nil{
+	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(user.UserID)
@@ -197,31 +195,31 @@ func Hackfit(c *gin.Context){
 	coll := mgm.Coll(&models.Users{})
 
 	_ = coll.FindByID(user.UserID, &userFound)
-	if userFound.Name == ""{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"user not found"})
+	if userFound.Name == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
 		return
 	}
-	if !userFound.PaymentCompleted{
-		c.JSON(http.StatusBadRequest, gin.H{"error":"payment not completed"})
+	if !userFound.PaymentCompleted {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "payment not completed"})
 		return
 	}
 	userFound.CheckIn = true
-	err :=mgm.Coll(&userFound).Update(&userFound)
-	if err != nil{
-		c.JSON(http.StatusInternalServerError, gin.H{"error":"internal server error"})
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
-	c.JSON(http.StatusOK,userFound)
+	c.JSON(http.StatusOK, userFound)
 }
 
-func HackfitCheckIn(c *gin.Context){
+func HackfitCheckIn(c *gin.Context) {
 	coll := mgm.Coll(&models.Users{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var results []models.Users
+	results := []models.Users{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
@@ -232,27 +230,21 @@ func HackfitCheckIn(c *gin.Context){
 			panic(err)
 		}
 		fmt.Printf("%s\n", output)
-	}
-
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
 	}
 
 	c.JSON(http.StatusOK, results)
 
 }
 
-
 func GoWorkshopCheckIn(c *gin.Context) {
 
 	coll := mgm.Coll(&models.Gos{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var results []models.Gos
+	results := []models.Gos{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
@@ -263,11 +255,6 @@ func GoWorkshopCheckIn(c *gin.Context) {
 			panic(err)
 		}
 		fmt.Printf("%s\n", output)
-	}
-
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
 	}
 
 	c.JSON(http.StatusOK, results)
@@ -276,12 +263,12 @@ func GoWorkshopCheckIn(c *gin.Context) {
 func ArWorkshopCheckIn(c *gin.Context) {
 
 	coll := mgm.Coll(&models.Ars{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var results []models.Ars
+	results := []models.Ars{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
@@ -292,11 +279,6 @@ func ArWorkshopCheckIn(c *gin.Context) {
 			panic(err)
 		}
 		fmt.Printf("%s\n", output)
-	}
-
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
 	}
 
 	c.JSON(http.StatusOK, results)
@@ -305,12 +287,12 @@ func ArWorkshopCheckIn(c *gin.Context) {
 func WebWorkshopCheckIn(c *gin.Context) {
 
 	coll := mgm.Coll(&models.Webs{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var results []models.Webs
+	results := []models.Webs{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
@@ -321,11 +303,6 @@ func WebWorkshopCheckIn(c *gin.Context) {
 			panic(err)
 		}
 		fmt.Printf("%s\n", output)
-	}
-
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
 	}
 
 	c.JSON(http.StatusOK, results)
@@ -334,12 +311,12 @@ func WebWorkshopCheckIn(c *gin.Context) {
 func FlutterWorkshopCheckIn(c *gin.Context) {
 
 	coll := mgm.Coll(&models.Flutters{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var results []models.Flutters
+	results := []models.Flutters{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
@@ -350,11 +327,6 @@ func FlutterWorkshopCheckIn(c *gin.Context) {
 			panic(err)
 		}
 		fmt.Printf("%s\n", output)
-	}
-
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
 	}
 
 	c.JSON(http.StatusOK, results)
@@ -364,12 +336,12 @@ func FlutterWorkshopCheckIn(c *gin.Context) {
 func DevopsWorkshopCheckIn(c *gin.Context) {
 
 	coll := mgm.Coll(&models.Devops{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var results []models.Devops
+	results := []models.Devops{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
@@ -382,18 +354,13 @@ func DevopsWorkshopCheckIn(c *gin.Context) {
 		fmt.Printf("%s\n", output)
 	}
 
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
-	}
-
 	c.JSON(http.StatusOK, results)
 
 }
 func RustWorkshopCheckIn(c *gin.Context) {
 
 	coll := mgm.Coll(&models.Rusts{})
-	cursor, err := coll.Find(context.TODO(), bson.M{"checkin":true,"payment_completed":true})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true, "payment_completed": true})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -411,13 +378,6 @@ func RustWorkshopCheckIn(c *gin.Context) {
 		fmt.Printf("%s\n", output)
 	}
 
-	if(len(results)==0){
-		c.JSON(http.StatusInternalServerError,gin.H{"error":"none checked in"})
-		return
-	}
-
 	c.JSON(http.StatusOK, results)
 
 }
-
-
