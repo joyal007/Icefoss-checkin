@@ -20,6 +20,7 @@ type Users struct{
 	CheckIn		bool		`json:"checkin" bson:"checkin"`
 	TeamStrength int		`json:"team_strength" bson:"team_strength"`
 	PaymentCompleted bool	`json:"payment_completed" bson:"payment_completed"`
+	Food		string		`json:"food" bson:"food"`
 }
 
 type Ars struct{
