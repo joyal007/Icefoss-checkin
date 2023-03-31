@@ -365,7 +365,7 @@ func RustWorkshopCheckIn(c *gin.Context) {
 		log.Fatal(err)
 	}
 
-	var results []models.Rusts
+	results :=[]models.Rusts{}
 	if err := cursor.All(context.TODO(), &results); err != nil {
 		log.Fatal(err)
 	}
