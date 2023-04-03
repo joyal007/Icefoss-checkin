@@ -13,6 +13,60 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
+func Culturals(c *gin.Context){
+	var user models.UserCul
+	if err := c.BindJSON(&user); err != nil{
+		fmt.Println(err)
+	}
+
+	var userFound models.DJS
+	
+	coll := mgm.Coll(&models.DJS{})
+	// context:=mgm.Ctx()
+
+
+	_ = coll.First(bson.M{"id":user.UserID}, &userFound)
+	if userFound.Name ==""{
+		c.JSON(http.StatusOK,gin.H{"response_code":"404","message":"user not found"})
+		return
+	}
+	if userFound.CheckIn{
+		c.JSON(http.StatusOK, gin.H{"response":userFound,"response_code":"501","message":"user already checkin"})
+		return
+	}
+	userFound.CheckIn = true
+	// fmt.Println(userFound)
+	err := mgm.Coll(&userFound).Update(&userFound)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"response_code": "500","message":"server error"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"response":userFound,"response_code":"200","message":"successful"})
+}
+
+func GetCulturals(c *gin.Context){
+	coll := mgm.Coll(&models.DJS{})
+	cursor, err := coll.Find(context.TODO(), bson.M{"checkin": true})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	results := []models.DJS{}
+	if err := cursor.All(context.TODO(), &results); err != nil {
+		log.Fatal(err)
+	}
+	for _, result := range results {
+		cursor.Decode(&result)
+		output, err := json.MarshalIndent(result, "", "    ")
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("%s\n", output)
+	}
+
+	c.JSON(http.StatusOK, gin.H{"response_code":"200","message":"successful","response":results})
+}
+
 func GoWorkshop(c *gin.Context) {
 	var user models.User
 	if err := c.BindJSON(&user); err != nil {

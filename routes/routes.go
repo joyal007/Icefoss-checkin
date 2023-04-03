@@ -6,6 +6,10 @@ import (
 )
 
 func Routes(routes *gin.RouterGroup){
+
+	routes.POST("/culturals",controllers.Culturals)
+	routes.GET("/culturals",controllers.GetCulturals)
+
 	routes.POST("/workshop/go",controllers.GoWorkshop)
 	routes.POST("/workshop/devops",controllers.DevopsWorkshop)
 	routes.POST("/hackfit",controllers.Hackfit)

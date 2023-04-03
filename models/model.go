@@ -6,6 +6,18 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type DJS struct{
+	mgm.DefaultModel	`bson:",inline"`
+	UserID		string 		`json:"id" bson:"id"`
+	Name	string		`json:"name" bson:"name"`
+	Email	string		`json:"email" bson:"email"`
+	CheckIn bool		`json:"checkin" bson:"checkin"`
+}
+
+type UserCul struct{
+	UserID		string	`json:"userid"`
+}
+
 type User struct{
 	UserID		primitive.ObjectID		`json:"userid"`
 }
